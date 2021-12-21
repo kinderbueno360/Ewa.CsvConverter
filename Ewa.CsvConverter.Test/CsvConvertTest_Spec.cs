@@ -33,21 +33,27 @@ namespace Ewa.CsvConverter.Test
         {
             // Arrange
             var sourceString = "Id,Name,Surname,Number\r\n" +
-                           "1,Carlos,Bueno,2\r\n";
-            var fooSource = new List<Foo>
-                    { new Foo { Id = "1", Name = "Carlos" } };
+                                "1,Carlos,Bueno,2\r\n" +
+                                "1,Andre,Ferreira,2\r\n" +
+                                "1,Bruno,Carvalho,2\r\n";
+
+            var expected = "Cod,Complete Name,Square\r\n" +
+                                "1,Andre Ferreira,4\r\n" + 
+                                "1,Bruno Carvalho,4\r\n" + 
+                                "1,Carlos Bueno,4\r\n"
+;
 
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
             var converter = new FooMap(source);
-            
+            Func<IEnumerable<Foo>, IEnumerable<Foo>> rulesToApply = x => x.OrderBy(y=>y.Name);
             // Act
             await converter
-                    .Convert(x=>x.ToList())
+                    .Convert(rulesToApply)
                     .Save(destination);
 
             // Assert
-            Assert.Contains(fooSource.SingleOrDefault().Name, converter.data.SingleOrDefault().Name);
+            Assert.Contains(expected, destination.ToString());
         }
 
         [Fact]
@@ -55,10 +61,11 @@ namespace Ewa.CsvConverter.Test
         {
             // Arrange
             var sourceString = "Id,Name,Surname,Number\r\n" +
-                            "1,Carlos,Bueno,2\r\n";
+                                "1,Rafael,Ferreira,2\r\n"+ 
+                                "2,Carlos,Bueno,2\r\n";
 
             var expected = "Cod,Complete Name,Square\r\n" +
-                            "1,Carlos Bueno,4\r\n";
+                            "2,Carlos Bueno,4\r\n";
 ;
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
@@ -66,7 +73,7 @@ namespace Ewa.CsvConverter.Test
 
             // Act
             await converter
-                    .Convert(x => x.ToList())
+                    .Convert(x => x.Where(x=>x.Name.Equals("Carlos")))
                     .Save(destination);
 
             // Assert
