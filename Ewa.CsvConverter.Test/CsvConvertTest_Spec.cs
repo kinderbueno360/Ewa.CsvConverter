@@ -22,7 +22,7 @@ namespace Ewa.CsvConverter.Test
             using var source = new StringReader(sourceString);
 
             // Act
-            var converter = new ConvertFooToFooDest(source);
+            var converter = new FooMap(source);
 
             // Assert
             Assert.Contains(fooSource.SingleOrDefault().Name, converter.data.SingleOrDefault().Name);
@@ -42,7 +42,7 @@ namespace Ewa.CsvConverter.Test
             using var destination = new StringWriter();
 
             // Act
-            var converter = new ConvertFooToFooDest(source);
+            var converter = new FooMap(source);
 
             await converter
                     .Convert(x=>x.ToList())
@@ -67,7 +67,7 @@ namespace Ewa.CsvConverter.Test
 
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
-            var converter = new ConvertFooToFooDest(source);
+            var converter = new FooMap(source);
 
 
             // Act

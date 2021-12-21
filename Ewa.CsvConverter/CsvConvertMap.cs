@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Ewa.CsvConverter
 {
-    public class CsvConverter<TClass, TDest>
+    public class CsvConvertMap<TClass, TDest>
     {
 
         public readonly IEnumerable<TClass> data;
@@ -21,7 +21,7 @@ namespace Ewa.CsvConverter
 
         private List<ItemMap<TClass, TDest>> itemsDefinition;
 
-        public CsvConverter(TextReader source, bool hasHeaders = false)
+        public CsvConvertMap(TextReader source, bool hasHeaders = false)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
