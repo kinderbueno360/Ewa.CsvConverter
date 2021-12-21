@@ -19,8 +19,6 @@ namespace Ewa.CsvConverter.Test.Model
             Map(destination => destination.Square)
                     .Value(sourceCsv => square(sourceCsv.Number));
         }
-
-
     }
 
     /// <summary>

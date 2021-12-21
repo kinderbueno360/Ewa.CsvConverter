@@ -26,7 +26,6 @@ namespace Ewa.CsvConverter.Test
 
             // Assert
             Assert.Contains(fooSource.SingleOrDefault().Name, converter.data.SingleOrDefault().Name);
-
         }
 
         [Fact]
