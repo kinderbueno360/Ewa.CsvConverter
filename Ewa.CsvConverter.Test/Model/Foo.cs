@@ -18,6 +18,9 @@ namespace Ewa.CsvConverter.Test.Model
 
         [Name("Number")]
         public int Number { get; set; }
+
+        [Name("Order Id")]
+        public string OrderId { get; set; }
     }
 
    

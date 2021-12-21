@@ -12,10 +12,11 @@ namespace Ewa.CsvConverter.Test
     public class CsvConvertTest_Spec
     {
         [Fact]
-        public async Task CsvConvertTest_create_should_have_correct_data_from_csv() {
+        public async Task CsvConvertTest_create_should_get_correct_data_from_csv() {
             // Arrange
-            var sourceString = "Id,Name,Surname,Number\r\n" +
-                           "1,Carlos,Bueno,2\r\n";
+            var sourceString = "Id,Name,Surname,Number,Order Id\r\n" +
+                           "1,Carlos,Bueno,2,3\r\n";
+
             var fooSource = new List<Foo> 
                     { new Foo { Id = "1", Name = "Carlos" } };
 
@@ -29,19 +30,18 @@ namespace Ewa.CsvConverter.Test
         }
 
         [Fact]
-        public async Task CsvConvertTest_create_should_have_correct_data_from_csv2()
+        public async Task CsvConvertTest_Convert_with_func_to_query_data_to_destination_file_should_result_expected_data()
         {
             // Arrange
-            var sourceString = "Id,Name,Surname,Number\r\n" +
-                                "1,Carlos,Bueno,2\r\n" +
-                                "1,Andre,Ferreira,2\r\n" +
-                                "1,Bruno,Carvalho,2\r\n";
+            var sourceString = "Id,Name,Surname,Number,Order Id\r\n" +
+                                "1,Carlos,Bueno,2,1\r\n" +
+                                "1,Andre,Ferreira,2,3\r\n" +
+                                "1,Bruno,Carvalho,2,4\r\n";
 
             var expected = "Cod,Complete Name,Square\r\n" +
                                 "1,Andre Ferreira,4\r\n" + 
                                 "1,Bruno Carvalho,4\r\n" + 
-                                "1,Carlos Bueno,4\r\n"
-;
+                                "1,Carlos Bueno,4\r\n";
 
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
@@ -57,12 +57,12 @@ namespace Ewa.CsvConverter.Test
         }
 
         [Fact]
-        public async Task CsvConvertTest_create_should_have_correct_data_from_csv_final()
+        public async Task CsvConvertTest_Convert_with_quering_data_to_destination_file_should_result_expected_data()
         {
             // Arrange
-            var sourceString = "Id,Name,Surname,Number\r\n" +
-                                "1,Rafael,Ferreira,2\r\n"+ 
-                                "2,Carlos,Bueno,2\r\n";
+            var sourceString = "Id,Name,Surname,Number,Order Id\r\n" +
+                                "1,Rafael,Ferreira,2,2\r\n"+ 
+                                "2,Carlos,Bueno,2,4\r\n";
 
             var expected = "Cod,Complete Name,Square\r\n" +
                             "2,Carlos Bueno,4\r\n";
