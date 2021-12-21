@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ewa.CsvConverter", "Ewa.CsvConverter\Ewa.CsvConverter.csproj", "{9C96C517-041D-4691-8DFF-386F52C3AE8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ewa.CsvConverter.Test", "Ewa.CsvConverter.Test\Ewa.CsvConverter.Test.csproj", "{AFFAEC43-E43A-4989-9C03-507E05EF70D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C96C517-041D-4691-8DFF-386F52C3AE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C96C517-041D-4691-8DFF-386F52C3AE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C96C517-041D-4691-8DFF-386F52C3AE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C96C517-041D-4691-8DFF-386F52C3AE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFFAEC43-E43A-4989-9C03-507E05EF70D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFFAEC43-E43A-4989-9C03-507E05EF70D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFFAEC43-E43A-4989-9C03-507E05EF70D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFFAEC43-E43A-4989-9C03-507E05EF70D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65ACFE76-0165-439F-B686-ABDE08014828}
+	EndGlobalSection
+EndGlobal
