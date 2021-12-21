@@ -8,7 +8,7 @@ namespace Ewa.CsvConverter.Test.Stub.OrderService
     public class FakeOrderService : IOrderService
     {
         public readonly IEnumerable<Order> orders;
-        public FakeOrderService() 
+        public FakeOrderService()
         {
             orders = new List<Order>
             {
@@ -23,5 +23,15 @@ namespace Ewa.CsvConverter.Test.Stub.OrderService
             => orders
                     .Where(x => x.Id.Equals(id))
                     .SingleOrDefault();
+
+        public IEnumerable<Order> GetOrdersByIds(IEnumerable<string> ids)
+        {
+            var result = orders
+                        .Where(x => ids.Contains(x.Id))
+                        .ToList();
+
+            return result;
+        }
+
     }
 }

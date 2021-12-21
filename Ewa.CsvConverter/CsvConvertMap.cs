@@ -46,7 +46,7 @@ namespace Ewa.CsvConverter
 
         public CsvDestination<TDest> Convert(Func<IEnumerable<TClass>, IEnumerable<TClass>> rulesToApply)
         {
-            var csvData = rulesToApply(data);
+            var csvData = rulesToApply(data).ToList();
 
             var result = csvData
                             .AddContent(itemsDefinition);
