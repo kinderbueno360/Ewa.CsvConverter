@@ -40,19 +40,16 @@ namespace Ewa.CsvConverter.Test
 
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
-
-            // Act
             var converter = new FooMap(source);
-
+            
+            // Act
             await converter
                     .Convert(x=>x.ToList())
                     .Save(destination);
 
             // Assert
             Assert.Contains(fooSource.SingleOrDefault().Name, converter.data.SingleOrDefault().Name);
-
         }
-
 
         [Fact]
         public async Task CsvConvertTest_create_should_have_correct_data_from_csv_final()
@@ -64,24 +61,17 @@ namespace Ewa.CsvConverter.Test
             var expected = "Cod,Complete Name,Square\r\n" +
                             "1,Carlos Bueno,4\r\n";
 ;
-
             using var source = new StringReader(sourceString);
             using var destination = new StringWriter();
             var converter = new FooMap(source);
 
-
             // Act
-
-
             await converter
                     .Convert(x => x.ToList())
                     .Save(destination);
 
             // Assert
             Assert.Equal(expected,destination.ToString());
-
         }
-
-
     }
 }
