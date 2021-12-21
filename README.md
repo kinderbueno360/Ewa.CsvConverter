@@ -23,14 +23,14 @@ This is a Framework designed to convert CSV files applying business rules.
                                     "1,Andre,Ferreira,2,3\r\n" +
                                     "1,Bruno,Carvalho,2,4\r\n";
 
-            using var source = new StringReader(sourceString);
-            using var destination = new StringWriter();
-            var converter = new FooMap(source);
-            Func<IEnumerable<Foo>, IEnumerable<Foo>> rulesToApply = x => x.OrderBy(y=>y.Name);
-            // Act
-            await converter
-                    .Convert(rulesToApply)
-                    .Save(destination);
+        using var source = new StringReader(sourceString);
+        using var destination = new StringWriter();
+        var converter = new FooMap(source);
+        Func<IEnumerable<Foo>, IEnumerable<Foo>> rulesToApply = x => x.OrderBy(y=>y.Name);
+        // Act
+        await converter
+                .Convert(rulesToApply)
+                .Save(destination);
     }
     
     public class FooMap : CsvConvertMap<Foo, FooDest>
